@@ -5,18 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>YouTube Video Player</title>
   <style>
-    /* Styles as before */
+    /* Global Styles */
 
     body {
       margin: 0;
       padding: 0;
+      background-color: #111;
+      color: #fff;
+      font-family: 'Courier New', Courier, monospace;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       min-height: 100vh;
-      background-color: #fff;
     }
+
+    /* TV Screen Styles */
 
     .tv-screen {
       width: 800px;
@@ -39,8 +43,8 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      font-size: 40px;
-      color: #fff;
+      font-size: 24px;
+      color: #666;
       animation: bounce 2s infinite;
     }
 
@@ -52,10 +56,13 @@
         transform: translate(-50%, -50%) translateY(-20px);
       }
     }
-    
+
+    /* Input and Button Styles */
+
     .controls {
       text-align: center;
       width: 100%;
+      margin-bottom: 20px;
     }
 
     .video-input {
@@ -73,9 +80,11 @@
       cursor: pointer;
     }
 
+    /* Copyright and Contact Styles */
+
     .copyright {
       text-align: center;
-      margin-top: 20px;
+      margin-top: auto;
       margin-bottom: 10px;
       font-size: 14px;
     }
@@ -88,6 +97,9 @@
     .contact-email:hover {
       text-decoration: underline;
     }
+
+    /* Other styles as needed */
+
   </style>
 </head>
 <body>
@@ -97,13 +109,13 @@
   </div>
 
   <div class="tv-screen">
-    <div class="bouncing-text" id="bouncingText">enter your Youtube video link</div>
+    <div class="bouncing-text" id="bouncingText">Enter your YouTube video link</div>
     <iframe class="video-embed" id="videoPlayer" src="" frameborder="0" allowfullscreen></iframe>
   </div>
 
   <div class="copyright">
     &copy; 2023 MalfunctioningMind. All rights reserved.
-    Contact: <a class="contact-email" href="mailto:espritdysfonctionnel@caramail.fr">espritdysfonctionnel@caramail.fr</a>
+    Contact: <a class="contact-email" href="mailto:malfunctioningmind@example.com">malfunctioningmind@example.com</a>
   </div>
 
   <script>
