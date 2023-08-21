@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YouTube Video Player</title>
+  <style>
+    /* Styles as before */
+
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background-color: #fff;
+    }
+
+    .tv-screen {
+      width: 800px;
+      height: 600px;
+      background-color: #000;
+      border: 10px solid #333;
+      border-radius: 20px;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+
+    .video-embed {
+      width: 100%;
+      height: 100%;
+    }
+
+    .bouncing-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 40px;
+      color: #fff;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translate(-50%, -50%) translateY(0);
+      }
+      50% {
+        transform: translate(-50%, -50%) translateY(-20px);
+      }
+    }
+    
+    .controls {
+      text-align: center;
+      width: 100%;
+    }
+
+    .video-input {
+      width: 60%;
+      padding: 5px;
+      font-size: 16px;
+    }
+
+    .play-button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #ff0000;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+
+    .copyright {
+      text-align: center;
+      margin-top: 20px;
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+
+    .contact-email {
+      color: #00f;
+      text-decoration: none;
+    }
+
+    .contact-email:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="controls">
+    <input type="text" class="video-input" id="videoLink" placeholder="Enter YouTube video link">
+    <button class="play-button" onclick="playVideo()">Play Video</button>
+  </div>
+
+  <div class="tv-screen">
+    <div class="bouncing-text" id="bouncingText">enter your Youtube video link</div>
+    <iframe class="video-embed" id="videoPlayer" src="" frameborder="0" allowfullscreen></iframe>
+  </div>
+
+  <div class="copyright">
+    &copy; 2023 MalfunctioningMind. All rights reserved.
+    Contact: <a class="contact-email" href="mailto:espritdysfonctionnel@caramail.fr">espritdysfonctionnel@caramail.fr</a>
+  </div>
+
+  <script>
+    function playVideo() {
+      var videoLink = document.getElementById("videoLink").value;
+      var videoPlayer = document.getElementById("videoPlayer");
+      var bouncingText = document.getElementById("bouncingText");
+
+      videoPlayer.src = "https://www.youtube.com/embed/" + getVideoId(videoLink);
+      bouncingText.style.display = "none";
+    }
+
+    function getVideoId(url) {
+      var videoId = "";
+      var match = url.match(/[?&]v=([^&]+)/);
+      if (match) {
+        videoId = match[1];
+      } else {
+        videoId = url.split("/").pop();
+      }
+      return videoId;
+    }
+  </script>
+</body>
+</html>
